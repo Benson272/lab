@@ -16,10 +16,10 @@
 <body>
   <form id="form">
     <label for="labelName">What is the label name</label><br>
-    <input type="text" id="labelName" name="labelName"><br>
+    <input type="text" id="labelName" name="labelName" required><br>
 
     <label for="sectionsPerSlide">How many sections per side</label><br>
-    <input type="text" id="sectionsPerSlide" name="sectionsPerSlide"><br>
+    <input type="text" id="sectionsPerSlide" name="sectionsPerSlide" required><br>
 
     <label for="unstainedBlock">How many Unstained/block (leave empty if none)</label><br>
     <input type="text" id="unstainedBlock" name="unstainedBlock"><br>
@@ -28,8 +28,9 @@
     <input type="text" id="heBlock" name="heBlock"><br>
 
     <label for="sampleList">List all the sample separated by a comma and a space. Eg: sample1, sample2, sample3</label><br>
-    <input type="text" id="sampleList" name="sampleList"><br>
+    <input type="text" id="sampleList" name="sampleList" required><br>
 
+    <input type="reset">
     <input type="submit" value="Submit">
   </form>
 
