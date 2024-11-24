@@ -36,8 +36,8 @@ const processForm = (form) => {
   const sectionsPerSlide = formData.get('sectionsPerSlide');
   const unstainedBlock = formData.get('unstainedBlock') || '0';
   const heBlock = formData.get('heBlock') || '0';
+  const specialStains = formData.get('specialStains')?.split(", ");
   const sampleList = formData.get('sampleList').split(", ");
-
 
   let sampleListA = []
   let sampleListB = []
@@ -54,6 +54,7 @@ const processForm = (form) => {
   console.log(labelName, sectionsPerSlide, unstainedBlock, heBlock, sampleListA, sampleListB)
 
   let csv = 'Label1, Label2, Label3, Text1, total # of slides, # of sections per slide\n';
+  let totalSlides = 0
 
   sampleListA.forEach((sampleName, idx) => {
     const label1 = sampleName;
@@ -63,17 +64,39 @@ const processForm = (form) => {
 
     let text1;
     let totalNumSlide;
+
+    //process H&E
     if (Number(heBlock) > 0) {
       text1 = 'H&E';
       totalNumSlide = heBlock
       csv += `${label1}, ${label2}, ${label3}, ${text1}, ${totalNumSlide}, ${numSectionPerSlide} \n`;
+      totalSlides += Number(totalNumSlide)
     }
+
+    //process special stains
+    if (specialStains.length > 0) {
+      for(var i = 0; i < specialStains.length; i++){
+        if (i % 2 == 0) {
+          //this is the name of a stain
+          text1 = specialStains[i];
+          totalNumSlide = specialStains[++i]
+          csv += `${label1}, ${label2}, ${label3}, ${text1}, ${totalNumSlide}, ${numSectionPerSlide} \n`;
+          totalSlides += Number(totalNumSlide)
+        }
+      }
+    }
+
+    //process unstained
     if (Number(unstainedBlock) > 0) {
       text1 = 'Unstained';
       totalNumSlide = unstainedBlock
       csv += `${label1}, ${label2}, ${label3}, ${text1}, ${totalNumSlide}, ${numSectionPerSlide} \n`;
+      totalSlides += Number(totalNumSlide)
     }
   })
+  csv += `,,,,${totalSlides}, \n`
+
+  // document.getElementById('test').innerText = csv
 
   return [csv, labelName]
 }

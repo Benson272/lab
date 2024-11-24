@@ -27,7 +27,10 @@
     <label for="heBlock">How many H&E/block (leave empty if none)</label><br>
     <input type="text" id="heBlock" name="heBlock"><br>
 
-    <label for="sampleList">List all the sample separated by a comma and a space. Eg: sample1, sample2, sample3</label><br>
+    <label for="specialStains">Any special stains, # slides. Ex: stainOne, 1, stainTwo, 3 (leave empty if none)</label><br>
+    <input type="text" id="specialStains" name="specialStains"><br>
+
+    <label for="sampleList">List all the sample separated by a comma and a space. Ex: sample1, sample2, sample3</label><br>
     <input type="text" id="sampleList" name="sampleList" required><br>
 
     <input type="reset">
@@ -35,5 +38,6 @@
   </form>
 
   <h2>Result:</h2>
+  <!-- <p id="test"></p> -->
   <a id='csvLink'></a>
 </body>
