@@ -1,0 +1,38 @@
+<!Doctype HTML>
+<head>
+  <script src="index.js"></script>
+  <style>
+    body {
+      font-size:20px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    #form > input {
+      margin-bottom:32px;
+      font-size:20px;
+      width:100%;
+    }
+  </style>
+</head>
+<body>
+  <form id="form">
+    <label for="labelName">What is the label name</label><br>
+    <input type="text" id="labelName" name="labelName"><br>
+
+    <label for="sectionsPerSlide">How many sections per side</label><br>
+    <input type="text" id="sectionsPerSlide" name="sectionsPerSlide"><br>
+
+    <label for="unstainedBlock">How many Unstained/block (leave empty if none)</label><br>
+    <input type="text" id="unstainedBlock" name="unstainedBlock"><br>
+
+    <label for="heBlock">How many H&E/block (leave empty if none)</label><br>
+    <input type="text" id="heBlock" name="heBlock"><br>
+
+    <label for="sampleList">List all the sample separated by a comma and a space. Eg: sample1, sample2, sample3</label><br>
+    <input type="text" id="sampleList" name="sampleList"><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <h2>Result:</h2>
+  <a id='csvLink'></a>
+</body>
